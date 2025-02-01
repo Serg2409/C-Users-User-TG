@@ -1,15 +1,15 @@
-import os
-from aiogram import Bot, Dispatcher, types
-from aiogram.utils import executor
+import asyncio
+from aiogram import Bot, Dispatcher
 
-TOKEN = os.getenv("BOT_TOKEN")  # Бот отримає токен із налаштувань Render
+TOKEN = "8196132098:AAFFeJRBZCZmR65kA3UNe4iiZRS_BGtfrpY"
 
 bot = Bot(token=TOKEN)
-dp = Dispatcher(bot)
+dp = Dispatcher()
 
-@dp.message_handler(commands=["start"])
-async def start(message: types.Message):
-    await message.answer("Привіт! Я Telegram-бот!")
+async def main():
+    print("Bot is running...")
+    await dp.start_polling(bot)
 
 if __name__ == "__main__":
-    executor.start_polling(dp, skip_updates=True)
+    asyncio.run(main())
+
